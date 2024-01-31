@@ -48,6 +48,7 @@ export default function Register() {
 
   return (
     <div>
+      <h2>Register a new account</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

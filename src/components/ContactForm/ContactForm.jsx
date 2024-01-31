@@ -41,7 +41,7 @@ export default function ContactForm() {
     const contact = {
       // id: nanoid(),
       name,
-      phone: number,
+      number,
     };
     console.log(contact);
     dispatch(postContact(contact))
