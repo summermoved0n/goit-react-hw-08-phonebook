@@ -1,0 +1,10 @@
+.user_conteiner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_btn {
+  padding: 0;
+  height: 20px;
+}
