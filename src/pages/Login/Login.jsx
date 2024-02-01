@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/authOperations';
+import css from './Login.module.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -35,10 +36,12 @@ export default function Login() {
   };
 
   return (
-    <div>
-      <h2>Login to your account!</h2>
-      <form onSubmit={handleSubmit}>
+    <div className={css.login_conteiner}>
+      <h2 className={css.login_title}>Login to your account</h2>
+      <form className={css.login_form} onSubmit={handleSubmit}>
+        <p className={css.login_text}>Email</p>
         <input
+          className={css.login_input}
           type="email"
           name="email"
           value={email}
@@ -47,8 +50,9 @@ export default function Login() {
           required
           autoComplete="off"
         />
-        <br />
+        <p className={css.login_text}>Password</p>
         <input
+          className={css.login_input}
           type="password"
           name="password"
           value={password}
@@ -57,8 +61,9 @@ export default function Login() {
           required
           autoComplete="off"
         />
-        <br />
-        <button type="submit">Login</button>
+        <button className={css.login_btn} type="submit">
+          Login
+        </button>
       </form>
     </div>
   );

@@ -36,7 +36,6 @@ export default function Contacts() {
         <Toaster position="top-right" reverseOrder={false} />
       </div>
       <div className={css.app_conteiner}>
-        <h1 className={css.app_title}>Phonebook</h1>
         <ContactForm />
         <h2 className={css.app_subtitle}>Contacts</h2>
         <Filter />

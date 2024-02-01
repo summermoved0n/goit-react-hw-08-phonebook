@@ -24,12 +24,13 @@ export default function ContactList() {
 
   return (
     <ul className={css.list}>
-      {filteredContacts.map(({ id, name, phone }) => (
+      {filteredContacts.map(({ id, name, number }) => (
         <ContactListItems
           key={id}
+          s
           id={id}
           name={name}
-          number={phone}
+          number={number}
           deleteContact={deleteContact}
         />
       ))}

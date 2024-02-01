@@ -10,8 +10,7 @@ export const UserMenu = () => {
 
   return (
     <div className={css.user_conteiner}>
-      <p>🐷</p>
-      <p>{email}</p>
+      <p className={css.user_email}>{email}</p>
       <button
         className={css.user_btn}
         type="button"

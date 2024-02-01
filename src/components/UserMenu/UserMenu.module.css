@@ -2,9 +2,29 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 10px;
+}
+
+.user_email {
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  color: #000;
 }
 
 .user_btn {
+  cursor: pointer;
   padding: 0;
   height: 20px;
+  width: 60px;
+  border: 1px solid teal;
+  background-color: #fff;
+  color: teal;
+  border-radius: 7px;
+  transition: all 250ms ease;
+}
+
+.user_btn:is(:hover, :focus) {
+  background-color: teal;
+  color: #fff;
 }

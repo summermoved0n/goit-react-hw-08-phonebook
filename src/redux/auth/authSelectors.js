@@ -7,3 +7,8 @@ export const selectAuthLoggedIn = state => {
   const { isLoggedIn } = state.auth;
   return isLoggedIn;
 };
+
+export const selectAuthLoading = state => {
+  const { isLoading } = state.auth;
+  return isLoading;
+};
