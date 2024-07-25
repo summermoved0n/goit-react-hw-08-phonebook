@@ -1,3 +1,10 @@
+:root {
+  --mainText: #f7f7f7;
+  --inputText: #475467;
+  --inputTextBlack: #101828;
+  --blueColor: rgb(16, 189, 189);
+}
+
 body {
   background-image: url(./images/phonebook_bg.jpg);
   background-size: cover;
@@ -5,7 +12,9 @@ body {
   background-position: center;
   width: 100%;
   height: 100vh;
-  margin: 0;
+
+  color: var(--mainText);
+
   font-family: 'Courier New', Courier, monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
