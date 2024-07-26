@@ -18,15 +18,16 @@ import { mainConteinerStyles, navigationStyles } from 'services/stylesChakra';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectAuthLoggedIn);
+
   return (
     <Box {...mainConteinerStyles}>
-      <Container {...navigationStyles} justifyContent="space-between">
-        <Container gap={2}>
+      <Box {...navigationStyles}>
+        <Box display={'flex'} alignItems={'center'} p={0} gap={2}>
           <Text fontWeight={700} fontSize={22}>
             Phonebook
           </Text>
           <FaAddressBook size={22} color="#f7f7f7" />
-        </Container>
+        </Box>
 
         <Button
           h={30}
@@ -38,10 +39,10 @@ export const Navigation = () => {
           <BsList size={26} color="#f7f7f7" />
         </Button>
 
-        <Container display={'none'}>
-          <Container>
+        <Breadcrumb display={'none'}>
+          <BreadcrumbItem>
             <StyledLink to="/">Home</StyledLink>
-          </Container>
+          </BreadcrumbItem>
           {isLoggedIn && (
             <BreadcrumbItem>
               <StyledLink to="/contacts">Contacts</StyledLink>
@@ -52,17 +53,17 @@ export const Navigation = () => {
               <UserMenu />
             </BreadcrumbItem>
           ) : (
-            <Breadcrumb>
+            <Container>
               <BreadcrumbItem>
                 <StyledLink to="/login">Login</StyledLink>
               </BreadcrumbItem>
               <BreadcrumbItem>
                 <StyledLink to="/register">Register</StyledLink>
               </BreadcrumbItem>
-            </Breadcrumb>
+            </Container>
           )}
-        </Container>
-      </Container>
+        </Breadcrumb>
+      </Box>
       <main>
         <Outlet />
       </main>

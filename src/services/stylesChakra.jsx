@@ -40,5 +40,4 @@ export const navigationStyles = {
   justifyContent: 'space-between',
   w: '100%',
   mb: '10px',
-  // pl: '30px',
 };
