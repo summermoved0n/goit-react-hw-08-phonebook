@@ -1,9 +1,8 @@
 import { Box, Link, Text } from '@chakra-ui/react';
-import { centerConteinerStyles } from 'services/stylesChakra';
 
 export default function Footer() {
   return (
-    <Box {...centerConteinerStyles} mt={10}>
+    <Box textAlign={'center'} mt={10}>
       <Text>
         @ created by{' '}
         <Link

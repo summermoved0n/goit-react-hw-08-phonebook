@@ -3,6 +3,7 @@ import { Global, css } from '@emotion/react';
 import { chakra } from '@chakra-ui/react';
 
 import phonebookBg from '../images/phonebook_bg.jpg';
+import mobileBgBook from '../images/bg-book-mob.jpg';
 
 export const GlobalStyle = () => (
   <Global
@@ -51,6 +52,19 @@ export const CustomInput = chakra('input', {
     _focus: {
       outline: '2px solid rgb(16, 189, 189)',
     },
+  },
+});
+
+export const CustomImage = chakra('div', {
+  baseStyle: {
+    bgImage: `url(${mobileBgBook})`,
+    bgSize: 'cover',
+    bgRepeat: 'no-repeat',
+    bgPosition: 'center',
+    w: '100%',
+    h: '300px',
+    borderRadius: '10px',
+    mb: '30px',
   },
 });
 

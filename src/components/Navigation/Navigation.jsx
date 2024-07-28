@@ -8,7 +8,6 @@ import { FaAddressBook } from 'react-icons/fa';
 import { BsList } from 'react-icons/bs';
 import {
   Box,
-  Container,
   Text,
   Breadcrumb,
   BreadcrumbItem,
@@ -46,7 +45,7 @@ export const Navigation = () => {
             <BurgerMenu isOpen={isOpen} onClose={onClose} />
           </Box>
 
-          <Breadcrumb display={['none', 'flex']}>
+          <Breadcrumb display={['none', 'flex']} separator=" ">
             <BreadcrumbItem>
               <StyledLink to="/">Home</StyledLink>
             </BreadcrumbItem>
@@ -60,14 +59,10 @@ export const Navigation = () => {
                 <UserMenu />
               </BreadcrumbItem>
             ) : (
-              <Box>
-                <BreadcrumbItem>
-                  <StyledLink to="/login">Login</StyledLink>
-                </BreadcrumbItem>
-                <BreadcrumbItem>
-                  <StyledLink to="/register">Register</StyledLink>
-                </BreadcrumbItem>
-              </Box>
+              <BreadcrumbItem {...centerConteinerStyles} gap={3}>
+                <StyledLink to="/login">Login</StyledLink>
+                <StyledLink to="/register">Register</StyledLink>
+              </BreadcrumbItem>
             )}
           </Breadcrumb>
         </Box>
