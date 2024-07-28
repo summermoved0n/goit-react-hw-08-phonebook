@@ -22,56 +22,60 @@ import {
   centerConteinerStyles,
 } from 'services/stylesChakra';
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
+import Footer from 'components/Footer/Footer';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectAuthLoggedIn);
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box {...mainConteinerStyles}>
-      <Box {...navigationStyles}>
-        <Box {...centerConteinerStyles} gap={2}>
-          <Text fontWeight={700} fontSize={22}>
-            Phonebook
-          </Text>
-          <FaAddressBook size={22} color="#f7f7f7" />
+    <>
+      <Box {...mainConteinerStyles}>
+        <Box {...navigationStyles}>
+          <Box {...centerConteinerStyles} gap={2}>
+            <Text fontWeight={700} fontSize={22}>
+              Phonebook
+            </Text>
+            <FaAddressBook size={22} color="#f7f7f7" />
+          </Box>
+
+          <Box>
+            <BurgerButton onClick={onOpen} display={['flex', 'none']}>
+              <BsList size={26} color="#f7f7f7" />
+            </BurgerButton>
+            <BurgerMenu isOpen={isOpen} onClose={onClose} />
+          </Box>
+
+          <Breadcrumb display={['none', 'flex']}>
+            <BreadcrumbItem>
+              <StyledLink to="/">Home</StyledLink>
+            </BreadcrumbItem>
+            {isLoggedIn && (
+              <BreadcrumbItem>
+                <StyledLink to="/contacts">Contacts</StyledLink>
+              </BreadcrumbItem>
+            )}
+            {isLoggedIn ? (
+              <BreadcrumbItem>
+                <UserMenu />
+              </BreadcrumbItem>
+            ) : (
+              <Box>
+                <BreadcrumbItem>
+                  <StyledLink to="/login">Login</StyledLink>
+                </BreadcrumbItem>
+                <BreadcrumbItem>
+                  <StyledLink to="/register">Register</StyledLink>
+                </BreadcrumbItem>
+              </Box>
+            )}
+          </Breadcrumb>
         </Box>
-
-        <div>
-          <BurgerButton onClick={onOpen} display={['flex', 'none']}>
-            <BsList size={26} color="#f7f7f7" />
-          </BurgerButton>
-          <BurgerMenu isOpen={isOpen} onClose={onClose} />
-        </div>
-
-        <Breadcrumb display={['none', 'flex']}>
-          <BreadcrumbItem>
-            <StyledLink to="/">Home</StyledLink>
-          </BreadcrumbItem>
-          {isLoggedIn && (
-            <BreadcrumbItem>
-              <StyledLink to="/contacts">Contacts</StyledLink>
-            </BreadcrumbItem>
-          )}
-          {isLoggedIn ? (
-            <BreadcrumbItem>
-              <UserMenu />
-            </BreadcrumbItem>
-          ) : (
-            <Container>
-              <BreadcrumbItem>
-                <StyledLink to="/login">Login</StyledLink>
-              </BreadcrumbItem>
-              <BreadcrumbItem>
-                <StyledLink to="/register">Register</StyledLink>
-              </BreadcrumbItem>
-            </Container>
-          )}
-        </Breadcrumb>
+        <main>
+          <Outlet />
+        </main>
       </Box>
-      <main>
-        <Outlet />
-      </main>
-    </Box>
+      <Footer />
+    </>
   );
 };

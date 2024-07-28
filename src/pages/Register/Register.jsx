@@ -1,7 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/auth/authOperations';
-import css from './Register.module.css';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormHelperText,
+  Heading,
+} from '@chakra-ui/react';
+import { centerConteinerStyles, CustomInput } from 'services/stylesChakra';
 
 export default function Register() {
   const [name, setName] = useState('');
@@ -48,46 +55,67 @@ export default function Register() {
   };
 
   return (
-    <div className={css.register_conteiner}>
-      <h2 className={css.register_title}>Register a new account</h2>
-      <form className={css.register_form} onSubmit={handleSubmit}>
-        <p className={css.register_text}>Name</p>
-        <input
-          className={css.register_input}
-          type="text"
-          name="name"
-          value={name}
-          placeholder="Name"
-          onChange={handleInputChange}
-          required
-          autoComplete="off"
-        />
-        <p className={css.register_text}>Email</p>
-        <input
-          className={css.register_input}
-          type="email"
-          value={email}
-          name="email"
-          placeholder="Email"
-          onChange={handleInputChange}
-          required
-          autoComplete="off"
-        />
-        <p className={css.register_text}>Password</p>
-        <input
-          className={css.register_input}
-          type="password"
-          value={password}
-          name="password"
-          placeholder="Password"
-          onChange={handleInputChange}
-          required
-          autoComplete="off"
-        />
-        <button className={css.register_btn} type="submit">
-          Send
-        </button>
+    <Box pt={30}>
+      <Heading as="h2" fontSize={['24px', '28px', '30px']} mb={10}>
+        Register a new account
+      </Heading>
+      <form onSubmit={handleSubmit}>
+        <FormControl
+          {...centerConteinerStyles}
+          flexDirection={'column'}
+          gap={3}
+        >
+          <FormHelperText color={'text'} fontSize={24}>
+            Name
+          </FormHelperText>
+          <CustomInput
+            type="text"
+            name="name"
+            value={name}
+            placeholder="Name"
+            onChange={handleInputChange}
+            required
+            autoComplete="off"
+          />
+          <FormHelperText color={'text'} fontSize={24}>
+            Email
+          </FormHelperText>
+          <CustomInput
+            type="email"
+            value={email}
+            name="email"
+            placeholder="Email"
+            onChange={handleInputChange}
+            required
+            autoComplete="off"
+          />
+          <FormHelperText color={'text'} fontSize={24}>
+            Password
+          </FormHelperText>
+          <CustomInput
+            type="password"
+            value={password}
+            name="password"
+            placeholder="Password"
+            onChange={handleInputChange}
+            required
+            autoComplete="off"
+          />
+          <Button
+            bgColor={'text'}
+            mt={10}
+            mb={10}
+            color={'input'}
+            transition={'color 250ms ease'}
+            _hover={{
+              color: 'blue',
+            }}
+            type="submit"
+          >
+            Send
+          </Button>
+        </FormControl>
       </form>
-    </div>
+    </Box>
   );
 }

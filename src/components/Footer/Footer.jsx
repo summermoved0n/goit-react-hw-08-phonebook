@@ -1,0 +1,19 @@
+import { Box, Link, Text } from '@chakra-ui/react';
+import { centerConteinerStyles } from 'services/stylesChakra';
+
+export default function Footer() {
+  return (
+    <Box {...centerConteinerStyles} mt={10}>
+      <Text>
+        @ created by{' '}
+        <Link
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://github.com/summermoved0n"
+        >
+          summermoved0n
+        </Link>
+      </Text>
+    </Box>
+  );
+}

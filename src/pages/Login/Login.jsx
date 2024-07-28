@@ -44,52 +44,54 @@ export default function Login() {
 
   return (
     <Box pt={30}>
-      <Heading as="h2" mb={10}>
+      <Heading as="h2" fontSize={['26px', '28px', '30px']} mb={10}>
         Login to your account
       </Heading>
-      <FormControl
-        {...centerConteinerStyles}
-        flexDirection={'column'}
-        gap={3}
-        onSubmit={handleSubmit}
-      >
-        <FormHelperText color={'text'} fontSize={24}>
-          Email
-        </FormHelperText>
-        <CustomInput
-          type="email"
-          name="email"
-          value={email}
-          placeholder="Email"
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-        <FormHelperText color={'text'} fontSize={24}>
-          Password
-        </FormHelperText>
-        <CustomInput
-          type="password"
-          name="password"
-          value={password}
-          placeholder="Password"
-          onChange={handleChange}
-          required
-          autoComplete="off"
-        />
-        <Button
-          mt={10}
-          mb={10}
-          color={'input'}
-          transition={'color 250ms ease'}
-          _hover={{
-            color: 'blue',
-          }}
-          type="submit"
+      <form onSubmit={handleSubmit}>
+        <FormControl
+          {...centerConteinerStyles}
+          flexDirection={'column'}
+          gap={3}
         >
-          Login
-        </Button>
-      </FormControl>
+          <FormHelperText color={'text'} fontSize={24}>
+            Email
+          </FormHelperText>
+          <CustomInput
+            type="email"
+            name="email"
+            value={email}
+            placeholder="Email"
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
+          <FormHelperText color={'text'} fontSize={24}>
+            Password
+          </FormHelperText>
+          <CustomInput
+            type="password"
+            name="password"
+            value={password}
+            placeholder="Password"
+            onChange={handleChange}
+            required
+            autoComplete="off"
+          />
+          <Button
+            bgColor={'text'}
+            mt={10}
+            mb={10}
+            color={'input'}
+            transition={'color 250ms ease'}
+            _hover={{
+              color: 'blue',
+            }}
+            type="submit"
+          >
+            Login
+          </Button>
+        </FormControl>
+      </form>
     </Box>
   );
 }
