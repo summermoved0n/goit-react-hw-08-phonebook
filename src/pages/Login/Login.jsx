@@ -2,6 +2,18 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/authOperations';
 import css from './Login.module.css';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormHelperText,
+  Heading,
+} from '@chakra-ui/react';
+import {
+  centerConteinerStyles,
+  CustomInput,
+  inputBasicStyles,
+} from 'services/stylesChakra';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -36,12 +48,20 @@ export default function Login() {
   };
 
   return (
-    <div className={css.login_conteiner}>
-      <h2 className={css.login_title}>Login to your account</h2>
-      <form className={css.login_form} onSubmit={handleSubmit}>
-        <p className={css.login_text}>Email</p>
-        <input
-          className={css.login_input}
+    <Box pt={30}>
+      <Heading as="h2" mb={10}>
+        Login to your account
+      </Heading>
+      <FormControl
+        {...centerConteinerStyles}
+        flexDirection={'column'}
+        gap={3}
+        onSubmit={handleSubmit}
+      >
+        <FormHelperText color={'text'} fontSize={24}>
+          Email
+        </FormHelperText>
+        <CustomInput
           type="email"
           name="email"
           value={email}
@@ -50,9 +70,10 @@ export default function Login() {
           required
           autoComplete="off"
         />
-        <p className={css.login_text}>Password</p>
-        <input
-          className={css.login_input}
+        <FormHelperText color={'text'} fontSize={24}>
+          Password
+        </FormHelperText>
+        <CustomInput
           type="password"
           name="password"
           value={password}
@@ -61,10 +82,19 @@ export default function Login() {
           required
           autoComplete="off"
         />
-        <button className={css.login_btn} type="submit">
+        <Button
+          mt={10}
+          mb={10}
+          color={'input'}
+          transition={'color 250ms ease'}
+          _hover={{
+            color: 'blue',
+          }}
+          type="submit"
+        >
           Login
-        </button>
-      </form>
-    </div>
+        </Button>
+      </FormControl>
+    </Box>
   );
 }

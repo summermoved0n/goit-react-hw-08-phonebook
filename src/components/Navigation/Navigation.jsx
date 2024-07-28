@@ -8,38 +8,43 @@ import { FaAddressBook } from 'react-icons/fa';
 import { BsList } from 'react-icons/bs';
 import {
   Box,
-  Button,
   Container,
   Text,
   Breadcrumb,
   BreadcrumbItem,
+  useDisclosure,
 } from '@chakra-ui/react';
-import { mainConteinerStyles, navigationStyles } from 'services/stylesChakra';
+
+import {
+  BurgerButton,
+  mainConteinerStyles,
+  navigationStyles,
+  centerConteinerStyles,
+} from 'services/stylesChakra';
+import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectAuthLoggedIn);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <Box {...mainConteinerStyles}>
       <Box {...navigationStyles}>
-        <Box display={'flex'} alignItems={'center'} p={0} gap={2}>
+        <Box {...centerConteinerStyles} gap={2}>
           <Text fontWeight={700} fontSize={22}>
             Phonebook
           </Text>
           <FaAddressBook size={22} color="#f7f7f7" />
         </Box>
 
-        <Button
-          h={30}
-          p={0}
-          m={0}
-          border={'1px solid gray'}
-          bgColor={'transparent'}
-        >
-          <BsList size={26} color="#f7f7f7" />
-        </Button>
+        <div>
+          <BurgerButton onClick={onOpen} display={['flex', 'none']}>
+            <BsList size={26} color="#f7f7f7" />
+          </BurgerButton>
+          <BurgerMenu isOpen={isOpen} onClose={onClose} />
+        </div>
 
-        <Breadcrumb display={'none'}>
+        <Breadcrumb display={['none', 'flex']}>
           <BreadcrumbItem>
             <StyledLink to="/">Home</StyledLink>
           </BreadcrumbItem>

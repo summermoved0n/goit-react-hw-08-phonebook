@@ -14,6 +14,7 @@ const colors = {
   input: '#475467',
   black: '#101828',
   blue: 'rgb(16, 189, 189)',
+  purple: 'rgba(143, 0, 172, 0.8)',
 };
 
 const theme = extendTheme({ colors });
