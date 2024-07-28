@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../redux/auth/authOperations';
-import css from './Login.module.css';
 import {
   Box,
   Button,
@@ -9,11 +8,7 @@ import {
   FormHelperText,
   Heading,
 } from '@chakra-ui/react';
-import {
-  centerConteinerStyles,
-  CustomInput,
-  inputBasicStyles,
-} from 'services/stylesChakra';
+import { centerConteinerStyles, CustomInput } from 'services/stylesChakra';
 
 export default function Login() {
   const [email, setEmail] = useState('');
