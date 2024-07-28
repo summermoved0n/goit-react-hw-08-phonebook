@@ -8,7 +8,6 @@ import {
   DrawerFooter,
   Text,
 } from '@chakra-ui/react';
-import { BsBox2Fill } from 'react-icons/bs';
 
 import { Link } from 'react-router-dom';
 
