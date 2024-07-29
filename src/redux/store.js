@@ -18,7 +18,6 @@ const authConfig = {
   key: 'auth',
   storage,
   whitelist: ['token'],
-  // blacklist: ['filter'],
 };
 
 export const store = configureStore({

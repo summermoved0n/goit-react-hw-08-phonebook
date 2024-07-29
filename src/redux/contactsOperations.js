@@ -5,9 +5,8 @@ export const fetchContacts = createAsyncThunk(
   'contucts/fetchContacts',
   async (_, { rejectWithValue }) => {
     try {
-      const contucts = await contactsAPI.getFetchContacts();
-      console.log(contucts);
-      return contucts;
+      const contacts = await contactsAPI.getFetchContacts();
+      return contacts;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -18,9 +17,8 @@ export const postContact = createAsyncThunk(
   'contucts/addContact',
   async (contact, { rejectWithValue }) => {
     try {
-      const contucts = await contactsAPI.postFetchContact(contact);
-      console.log(contucts);
-      return contucts;
+      const contacts = await contactsAPI.postFetchContact(contact);
+      return contacts;
     } catch (error) {
       return rejectWithValue(error);
     }

@@ -20,7 +20,6 @@ export const register = createAsyncThunk(
     try {
       console.log(registerData);
       const { data } = await axios.post('/users/signup', registerData);
-      console.log(data);
       token.set(data.token);
       return data;
     } catch (error) {

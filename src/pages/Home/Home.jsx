@@ -1,18 +1,11 @@
-import { Box, Heading, Text } from '@chakra-ui/react';
-import { HomeLink } from 'services/styledComponents';
+import { Box, Text } from '@chakra-ui/react';
+import { HomeLink, MainTitle } from 'services/styledComponents';
 import { CustomImage } from 'services/stylesChakra';
 
 export default function Home() {
   return (
     <Box pt={30} pb={30}>
-      <Heading
-        as="h1"
-        textAlign={'center'}
-        textShadow={'2px 2px 4px rgba(143, 0, 172, 0.8)'}
-        mb={30}
-      >
-        Welcome to Phonebook{' '}
-      </Heading>
+      <MainTitle>Welcome to Phonebook </MainTitle>
 
       <CustomImage>
         <Box
