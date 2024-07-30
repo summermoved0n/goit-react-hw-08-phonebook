@@ -92,3 +92,13 @@ export const centerConteinerStyles = {
   alignItems: 'center',
   justifyContent: 'center',
 };
+
+export const buttonsStyles = {
+  _hover: {
+    bgColor: 'blue',
+    color: 'text',
+  },
+  _focus: {
+    bgColor: 'cornflowerblue',
+  },
+};

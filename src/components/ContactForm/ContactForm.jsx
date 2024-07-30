@@ -4,7 +4,11 @@ import { selectContactItems } from '../../redux/selectors';
 import { postContact } from '../../redux/contactsOperations';
 import toast from 'react-hot-toast';
 import { Button, FormControl, FormLabel } from '@chakra-ui/react';
-import { centerConteinerStyles, CustomInput } from 'services/stylesChakra';
+import {
+  buttonsStyles,
+  centerConteinerStyles,
+  CustomInput,
+} from 'services/stylesChakra';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -100,13 +104,7 @@ export default function ContactForm() {
           m={'0 auto'}
           bgColor={'text'}
           color={'input'}
-          _hover={{
-            bgColor: 'blue',
-            color: 'text',
-          }}
-          _focus={{
-            bgColor: 'cornflowerblue',
-          }}
+          {...buttonsStyles}
           type="submit"
         >
           Add contact

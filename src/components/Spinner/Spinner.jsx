@@ -8,7 +8,7 @@ export const Spinner = () => {
         visible={true}
         height="40"
         width="40"
-        color="rgba(0, 128, 128, 0.7)"
+        color="white"
         secondaryColor=""
         strokeWidth={7}
         ariaLabel="oval-loading"

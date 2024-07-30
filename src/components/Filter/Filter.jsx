@@ -1,7 +1,7 @@
 import { nanoid } from 'nanoid';
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/contactsSlice';
-import { CustomInput } from 'services/stylesChakra';
+import { centerConteinerStyles, CustomInput } from 'services/stylesChakra';
 import { FormControl, FormLabel } from '@chakra-ui/react';
 
 export default function Filter() {
@@ -14,8 +14,8 @@ export default function Filter() {
   };
 
   return (
-    <FormControl mt={5}>
-      <FormLabel m={'0'} htmlFor={inputFilterId}>
+    <FormControl mt={5} {...centerConteinerStyles}>
+      <FormLabel m={0} htmlFor={inputFilterId}>
         <CustomInput
           type="text"
           name="filter"

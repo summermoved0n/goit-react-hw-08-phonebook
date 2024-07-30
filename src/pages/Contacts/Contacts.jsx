@@ -25,21 +25,53 @@ export default function Contacts() {
 
   return (
     <>
-      <Box {...centerConteinerStyles} flexDirection={'column'}>
+      <Box {...centerConteinerStyles} flexDirection={'column'} pb={[0, 0, 30]}>
         <Heading as="h2" mt={30} mb={30}>
           Contacts
         </Heading>
-        <Box>
-          <Box {...centerConteinerStyles} flexDirection={'column'}>
-            <ContactForm />
-            <Filter />
+        <Box
+          display={'flex'}
+          alignItems={['center', 'center', 'flex-start']}
+          flexDirection={['column', 'column', 'row']}
+          gap={[0, 0, 10]}
+        >
+          <Box
+            {...centerConteinerStyles}
+            flexDirection={'column'}
+            borderBottom={['1px solid white', '1px solid white', 'none']}
+            pb={[30, 30, 0]}
+          >
+            <Text
+              display={['none', 'none', 'block']}
+              fontSize={22}
+              fontWeight={600}
+              borderBottom={'1px solid white'}
+            >
+              Add contact / Filter
+            </Text>
+            <Box pt={30}>
+              <ContactForm />
+              <Filter />
+            </Box>
           </Box>
-          <Box>
+          <Box
+            pt={[30, 30, 0]}
+            pb={[30, 30, 0]}
+            display={'flex'}
+            flexDirection={'column'}
+          >
+            <Text
+              display={['none', 'none', 'block']}
+              fontSize={22}
+              fontWeight={600}
+              pl={5}
+              borderBottom={'1px solid white'}
+            >
+              Name / Phone
+            </Text>
             {isLoading && <Spinner />}
             {contacts.length === 0 && !isLoading && (
-              <Text mb={30} mt={30} textAlign={'center'}>
-                Your contacts list is empty.
-              </Text>
+              <Text textAlign={'center'}>Your contacts list is empty.</Text>
             )}
             {contacts.length > 0 && !isLoading && <ContactList />}
           </Box>

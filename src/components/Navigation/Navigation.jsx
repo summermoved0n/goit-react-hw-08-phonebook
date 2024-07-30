@@ -43,13 +43,13 @@ export const Navigation = () => {
           </Box>
 
           <Box>
-            <BurgerButton onClick={onOpen} display={['flex', 'none']}>
+            <BurgerButton onClick={onOpen} display={['flex', 'flex', 'none']}>
               <BsList size={26} color="#f7f7f7" />
             </BurgerButton>
             <BurgerMenu isOpen={isOpen} onClose={onClose} />
           </Box>
 
-          <Breadcrumb display={['none', 'flex']} separator=" ">
+          <Breadcrumb display={['none', 'none', 'flex']} separator=" ">
             <BreadcrumbItem>
               <StyledLink to="/">Home</StyledLink>
             </BreadcrumbItem>

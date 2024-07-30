@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectAuthUser } from '../../redux/auth/authSelectors';
 import { logOut } from '../../redux/auth/authOperations';
 import { Box, Button, Text } from '@chakra-ui/react';
-import { centerConteinerStyles } from 'services/stylesChakra';
+import { buttonsStyles, centerConteinerStyles } from 'services/stylesChakra';
 
 export const UserMenu = () => {
   const { email } = useSelector(selectAuthUser);
@@ -17,20 +17,15 @@ export const UserMenu = () => {
     >
       <Text
         borderRadius={5}
-        p={['2px', '0px']}
-        bgColor={['text', 'transparent']}
+        border={['none', 'none', '1px solid white']}
+        p={['2px', '2px', '2px 5px']}
+        bgColor={['text', 'text', 'transparent']}
       >
         {email}
       </Text>
       <Button
         h={30}
-        _hover={{
-          bgColor: 'blue',
-          color: 'text',
-        }}
-        _focus={{
-          bgColor: 'cornflowerblue',
-        }}
+        {...buttonsStyles}
         type="button"
         onClick={() => dispatch(logOut())}
       >
