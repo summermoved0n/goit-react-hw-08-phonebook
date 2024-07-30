@@ -1,10 +1,10 @@
-// import { nanoid } from 'nanoid';
 import { useState } from 'react';
-import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContactItems } from '../../redux/selectors';
 import { postContact } from '../../redux/contactsOperations';
 import toast from 'react-hot-toast';
+import { Button, FormControl, FormLabel } from '@chakra-ui/react';
+import { centerConteinerStyles, CustomInput } from 'services/stylesChakra';
 
 export default function ContactForm() {
   const [name, setName] = useState('');
@@ -39,7 +39,6 @@ export default function ContactForm() {
       return;
     }
     const contact = {
-      // id: nanoid(),
       name,
       number,
     };
@@ -71,36 +70,48 @@ export default function ContactForm() {
   const inputNumberId = 'numberInput';
 
   return (
-    <form className={css.form} onSubmit={handleSubmit}>
-      <label htmlFor={inputNameId}>
-        <span className={css.form_title}>Name</span>
-        <input
-          className={css.form_input}
-          type="text"
-          name="name"
-          value={name}
-          id={inputNameId}
-          required
-          onChange={handleChange}
-          autoComplete="off"
-        />
-      </label>
-      <label htmlFor={inputNumberId}>
-        <span className={css.form_title}>Number</span>
-        <input
-          className={css.form_input}
-          type="tel"
-          name="number"
-          value={number}
-          id={inputNumberId}
-          required
-          onChange={handleChange}
-          autoComplete="off"
-        />
-      </label>
-      <button className={css.form_btn} type="submit">
-        Add contact
-      </button>
+    <form onSubmit={handleSubmit}>
+      <FormControl {...centerConteinerStyles} flexDirection={'column'} gap={5}>
+        <FormLabel m={0} htmlFor={inputNameId}>
+          <CustomInput
+            type="text"
+            name="name"
+            value={name}
+            id={inputNameId}
+            placeholder="Name"
+            required
+            onChange={handleChange}
+            autoComplete="off"
+          />
+        </FormLabel>
+        <FormLabel m={0} htmlFor={inputNumberId}>
+          <CustomInput
+            type="tel"
+            name="number"
+            value={number}
+            id={inputNumberId}
+            placeholder="Number"
+            required
+            onChange={handleChange}
+            autoComplete="off"
+          />
+        </FormLabel>
+        <Button
+          m={'0 auto'}
+          bgColor={'text'}
+          color={'input'}
+          _hover={{
+            bgColor: 'blue',
+            color: 'text',
+          }}
+          _focus={{
+            bgColor: 'cornflowerblue',
+          }}
+          type="submit"
+        >
+          Add contact
+        </Button>
+      </FormControl>
     </form>
   );
 }

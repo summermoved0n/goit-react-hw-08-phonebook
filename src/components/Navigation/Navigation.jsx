@@ -22,6 +22,7 @@ import {
 } from 'services/stylesChakra';
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
 import Footer from 'components/Footer/Footer';
+import { Toaster } from 'react-hot-toast';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectAuthLoggedIn);
@@ -29,6 +30,9 @@ export const Navigation = () => {
 
   return (
     <>
+      <div>
+        <Toaster position="bottom-right" reverseOrder={false} />
+      </div>
       <Box {...mainConteinerStyles}>
         <Box {...navigationStyles}>
           <Box {...centerConteinerStyles} gap={2}>

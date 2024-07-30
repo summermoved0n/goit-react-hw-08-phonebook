@@ -1,7 +1,8 @@
 import { nanoid } from 'nanoid';
-import css from './Filter.module.css';
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/contactsSlice';
+import { CustomInput } from 'services/stylesChakra';
+import { FormControl, FormLabel } from '@chakra-ui/react';
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -13,15 +14,16 @@ export default function Filter() {
   };
 
   return (
-    <label className={css.filter} htmlFor={inputFilterId}>
-      <span className={css.filter_text}>Find contact by name</span>
-      <input
-        className={css.filter_input}
-        type="text"
-        name="filter"
-        id={inputFilterId}
-        onChange={handleFilter}
-      />
-    </label>
+    <FormControl mt={5}>
+      <FormLabel m={'0'} htmlFor={inputFilterId}>
+        <CustomInput
+          type="text"
+          name="filter"
+          id={inputFilterId}
+          placeholder="Search name"
+          onChange={handleFilter}
+        />
+      </FormLabel>
+    </FormControl>
   );
 }
