@@ -23,7 +23,7 @@ export default function ContactList() {
   };
 
   return (
-    <List spacing={[3, 3, 2]} pt={[0, 0, 30]}>
+    <List spacing={[3, 3, 2, 2, 2]} pt={[0, 0, 30]}>
       {filteredContacts.map(({ id, name, number }) => (
         <ContactListItems
           key={id}

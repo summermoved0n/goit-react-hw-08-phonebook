@@ -27,18 +27,20 @@ export const register = createAsyncThunk(
   }
 );
 
-export const logIn = createAsyncThunk('auth/login', async registerData => {
-  try {
-    console.log(registerData);
-    const { data } = await axios.post('/users/login', registerData);
-    console.log(data);
-    token.set(data.token);
-    toast.success(`Welcome to your account "${data.user.name}".🖐`);
-    return data;
-  } catch (error) {
-    toast.error('Something went wrong. Try entering the data again.');
+export const logIn = createAsyncThunk(
+  'auth/login',
+  async (registerData, { rejectWithValue }) => {
+    try {
+      const { data } = await axios.post('/users/login', registerData);
+      token.set(data.token);
+      toast.success(`Welcome to your account "${data.user.name}".🖐`);
+      return data;
+    } catch (error) {
+      toast.error('Something went wrong. Try entering the data again.');
+      return rejectWithValue(error.response.data);
+    }
   }
-});
+);
 
 export const logOut = createAsyncThunk('auth/logout', async () => {
   try {

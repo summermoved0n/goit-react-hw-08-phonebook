@@ -11,7 +11,7 @@ import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { selectAuthLoading } from '../redux/auth/authSelectors';
 import { Spinner } from './Spinner/Spinner';
-import css from './App.module.css';
+import { Box } from '@chakra-ui/react';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -22,9 +22,17 @@ export const App = () => {
   }, [dispatch]);
 
   return isLoading ? (
-    <div className={css.app_spinner}>
+    <Box
+      position={'fixed'}
+      top={'50%'}
+      left={'50%'}
+      transform={{
+        translateX: '-50%',
+        translateY: '-50%',
+      }}
+    >
       <Spinner />
-    </div>
+    </Box>
   ) : (
     <Routes>
       <Route path="/" element={<Navigation />}>

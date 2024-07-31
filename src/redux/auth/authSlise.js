@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { register, logIn, logOut, currentUser } from './authOperations';
 
 const initialState = {
@@ -17,30 +17,49 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.isLoading = false;
       })
-      // * vitya919@gmail.com - 123qweasdzxc
-      // * admirall74@gmail.com - 123qweasdzxc
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
+        state.isLoading = false;
       })
       .addCase(logOut.fulfilled, (state, action) => {
         state.user = { name: null, email: null };
         state.token = null;
         state.isLoggedIn = false;
-      })
-      .addCase(currentUser.pending, (state, action) => {
-        state.isLoading = true;
+        state.isLoading = false;
       })
       .addCase(currentUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.isLoggedIn = true;
         state.isLoading = false;
       })
-      .addCase(currentUser.rejected, (state, action) => {
-        state.isLoading = false;
-      }),
+      .addMatcher(
+        isAnyOf(
+          register.pending,
+          logIn.pending,
+          logOut.pending,
+          currentUser.pending
+        ),
+        state => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          register.rejected,
+          logIn.rejected,
+          logOut.rejected,
+          currentUser.rejected
+        ),
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        }
+      ),
 });
 
 export const authReducer = authSlice.reducer;

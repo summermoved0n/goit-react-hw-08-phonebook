@@ -13,8 +13,9 @@ export const GlobalStyle = () => (
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
+        background-attachment: fixed;
         width: 100%;
-        height: 100vh;
+        height: 100%;
 
         font-family: 'Courier New', Courier, monospace;
         color: #f7f7f7;

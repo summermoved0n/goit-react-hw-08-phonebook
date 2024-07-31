@@ -46,7 +46,6 @@ export default function ContactForm() {
       name,
       number,
     };
-    console.log(contact);
     dispatch(postContact(contact))
       .unwrap()
       .then(() => {

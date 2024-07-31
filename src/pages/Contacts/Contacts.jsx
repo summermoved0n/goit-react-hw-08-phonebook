@@ -26,14 +26,14 @@ export default function Contacts() {
   return (
     <>
       <Box {...centerConteinerStyles} flexDirection={'column'} pb={[0, 0, 30]}>
-        <Heading as="h2" mt={30} mb={30}>
+        <Heading as="h2" mt={30} mb={30} fontSize={[34, 34, 34, 40, 44]}>
           Contacts
         </Heading>
         <Box
           display={'flex'}
           alignItems={['center', 'center', 'flex-start']}
           flexDirection={['column', 'column', 'row']}
-          gap={[0, 0, 10]}
+          gap={[0, 0, 10, 10, 20]}
         >
           <Box
             {...centerConteinerStyles}
@@ -43,7 +43,7 @@ export default function Contacts() {
           >
             <Text
               display={['none', 'none', 'block']}
-              fontSize={22}
+              fontSize={[22, 22, 22, 26, 30]}
               fontWeight={600}
               borderBottom={'1px solid white'}
             >
@@ -62,16 +62,26 @@ export default function Contacts() {
           >
             <Text
               display={['none', 'none', 'block']}
-              fontSize={22}
+              fontSize={[22, 22, 22, 26, 30]}
               fontWeight={600}
               pl={5}
               borderBottom={'1px solid white'}
             >
               Name / Phone
             </Text>
-            {isLoading && <Spinner />}
+            {isLoading && (
+              <Box {...centerConteinerStyles} pt={'50%'}>
+                <Spinner />
+              </Box>
+            )}
             {contacts.length === 0 && !isLoading && (
-              <Text textAlign={'center'}>Your contacts list is empty.</Text>
+              <Text
+                textAlign={'center'}
+                pt={[0, 0, 30]}
+                fontSize={[16, 16, 18, 20, 22]}
+              >
+                Your contacts list is empty.
+              </Text>
             )}
             {contacts.length > 0 && !isLoading && <ContactList />}
           </Box>

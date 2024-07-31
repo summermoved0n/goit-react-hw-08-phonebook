@@ -1,6 +1,9 @@
 import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectAuthLoggedIn } from '../../redux/auth/authSelectors';
+import {
+  selectAuthLoading,
+  selectAuthLoggedIn,
+} from '../../redux/auth/authSelectors';
 import { UserMenu } from 'components/UserMenu/UserMenu';
 import { StyledLink } from '../../services/styledComponents';
 
@@ -23,10 +26,12 @@ import {
 import { BurgerMenu } from 'components/BurgerMenu/BurgerMenu';
 import Footer from 'components/Footer/Footer';
 import { Toaster } from 'react-hot-toast';
+import { Spinner } from 'components/Spinner/Spinner';
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectAuthLoggedIn);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const authloading = useSelector(selectAuthLoading);
 
   return (
     <>
@@ -70,9 +75,15 @@ export const Navigation = () => {
             )}
           </Breadcrumb>
         </Box>
-        <main>
-          <Outlet />
-        </main>
+        {authloading ? (
+          <Box>
+            <Spinner />
+          </Box>
+        ) : (
+          <main>
+            <Outlet />
+          </main>
+        )}
       </Box>
       <Footer />
     </>
